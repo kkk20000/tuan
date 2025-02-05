@@ -1,0 +1,92 @@
+.today {
+    background-color: yellow;
+}
+
+.calendar {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.calendar td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.calendar .date {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.calendar .goal-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 60px;
+    overflow: hidden;
+    height: auto;
+    white-space: pre-wrap;
+}
+
+.calendar th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    padding: 5px;
+}
+
+
+/* Màu sắc cho từng ngày trong tuần */
+
+.calendar th:nth-child(1) {
+    background-color: #f8d7da;
+}
+
+
+/* Chủ Nhật */
+
+.calendar th:nth-child(2) {
+    background-color: #f0e68c;
+}
+
+
+/* Thứ Hai */
+
+.calendar th:nth-child(3) {
+    background-color: #f0e68c;
+}
+
+
+/* Thứ Ba */
+
+.calendar th:nth-child(4) {
+    background-color: #f0e68c;
+}
+
+
+/* Thứ Tư */
+
+.calendar th:nth-child(5) {
+    background-color: #f0e68c;
+}
+
+
+/* Thứ Năm */
+
+.calendar th:nth-child(6) {
+    background-color: #f0e68c;
+}
+
+
+/* Thứ Sáu */
+
+.calendar th:nth-child(7) {
+    background-color: #d1ecf1;
+}
+
+
+/* Thứ Bảy */

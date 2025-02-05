@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch làm việc</title>
+    <style>
+        .today {
+            background-color: yellow;
+        }
+        
+        .calendar {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+        
+        .calendar td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            vertical-align: top;
+        }
+        
+        .calendar .date {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .calendar .goal-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+            resize: vertical;
+            /* Cho phép thay đổi kích thước chiều cao */
+            min-height: 60px;
+            /* Chiều cao tối thiểu ban đầu */
+            overflow: hidden;
+            /* Không có thanh cuộn */
+            height: auto;
+            /* Cho phép chiều cao tự động điều chỉnh */
+            white-space: pre-wrap;
+            /* Giữ định dạng các dòng văn bản */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="month-name"></h1>
+    <div>
+        <select id="search-month" oninput="searchDate()">
+            <option value="0">Tháng 1</option>
+            <option value="1">Tháng 2</option>
+            <option value="2">Tháng 3</option>
+            <option value="3">Tháng 4</option>
+            <option value="4">Tháng 5</option>
+            <option value="5">Tháng 6</option>
+            <option value="6">Tháng 7</option>
+            <option value="7">Tháng 8</option>
+            <option value="8">Tháng 9</option>
+            <option value="9">Tháng 10</option>
+            <option value="10">Tháng 11</option>
+            <option value="11">Tháng 12</option>
+        </select>
+    </div>
+
+    <table class="calendar" id="calendar-body"></table>
+
+    <script src="calendar.js"></script>
+    <!-- Phần tin nhắn nhóm -->
+    <h2>Tin nhắn nhóm</h2>
+    <div>
+        <textarea id="group-message-input" placeholder="Nhập tin nhắn nhóm..." rows="4" oninput="autoResize(this)"></textarea>
+        <button onclick="sendGroupMessage()">Gửi tin nhắn</button>
+    </div>
+
+    <!-- Hiển thị các tin nhắn nhóm -->
+    <div id="group-messages">
+        <h3>Các tin nhắn đã gửi:</h3>
+        <div id="messages-list"></div>
+    </div>
+
+</body>
+
+</html>
