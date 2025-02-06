@@ -36,7 +36,7 @@ function generateCalendar(month, year) {
             } else if (date <= totalDaysInMonth) {
                 td.innerHTML = `
                     <div class="date">${date}</div>
-                    <textarea class="goal-input" id="goal-${date}" placeholder="Nhập mục tiêu..." oninput="autoResize(this)" onchange="saveGoal(${date})"></textarea>
+                    <textarea class="goal-input" id="goal-${date}" placeholder="Nhập mục tiêu..." oninput="autoResize(this)" onchange="saveGoal(${date})" onclick="zoomIn(${date})"></textarea>
                 `;
 
                 // Kiểm tra ngày hôm nay
@@ -57,6 +57,29 @@ function generateCalendar(month, year) {
         calendarBody.appendChild(tr);
     }
 }
+
+// Hàm phóng to ô ngày khi nhấn
+let currentZoomedDate = null; // Biến để theo dõi ô ngày đang được phóng to
+
+function zoomIn(date) {
+    const goalInput = document.getElementById(`goal-${date}`);
+
+    // Nếu đã có ô nào đang được phóng to, thu nhỏ nó lại
+    if (currentZoomedDate !== null && currentZoomedDate !== date) {
+        const previousGoalInput = document.getElementById(`goal-${currentZoomedDate}`);
+        previousGoalInput.classList.remove("zoomed"); // Loại bỏ lớp zoomed của ô cũ
+    }
+
+    // Phóng to ô ngày mới
+    goalInput.classList.toggle("zoomed"); // Thêm/loại bỏ lớp zoomed cho textarea
+
+    // Cập nhật biến để theo dõi ô ngày đang được phóng to
+    currentZoomedDate = date;
+
+    // Đảm bảo textarea có chiều cao phù hợp với nội dung
+    autoResize(goalInput);
+}
+
 
 // Hàm tự động điều chỉnh chiều cao của textarea
 function autoResize(textarea) {
