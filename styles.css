@@ -1,6 +1,13 @@
-.today {
-    background-color: yellow;
+/* Đảm bảo lịch có thể được cuộn trên màn hình nhỏ */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
+
+
+/* Các thẻ thẻ, cột, ô của bảng lịch sẽ co dãn tốt trên màn hình nhỏ */
 
 .calendar {
     width: 100%;
@@ -8,85 +15,123 @@
     border-collapse: collapse;
 }
 
+
+/* Mỗi ô trong lịch có padding và giới hạn kích thước */
+
 .calendar td {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     vertical-align: top;
-}
-
-.calendar .date {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.calendar .goal-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
     font-size: 14px;
-    resize: vertical;
-    min-height: 60px;
-    overflow: hidden;
-    height: auto;
-    white-space: pre-wrap;
+    /* Kích thước chữ giảm cho phù hợp với màn hình nhỏ */
 }
+
+
+/* Ngày hôm nay được đánh dấu */
+
+.today {
+    background-color: yellow;
+}
+
+
+/* Các ngày trong tuần sẽ có màu nền nhẹ */
 
 .calendar th {
     background-color: #f0f0f0;
     font-weight: bold;
-    padding: 5px;
+    padding: 8px;
 }
 
 
-/* Màu sắc cho từng ngày trong tuần */
+/* Thứ Bảy và Chủ Nhật có màu sắc riêng */
 
 .calendar th:nth-child(1) {
     background-color: #f8d7da;
 }
-
-
-/* Chủ Nhật */
-
-.calendar th:nth-child(2) {
-    background-color: #f0e68c;
-}
-
-
-/* Thứ Hai */
-
-.calendar th:nth-child(3) {
-    background-color: #f0e68c;
-}
-
-
-/* Thứ Ba */
-
-.calendar th:nth-child(4) {
-    background-color: #f0e68c;
-}
-
-
-/* Thứ Tư */
-
-.calendar th:nth-child(5) {
-    background-color: #f0e68c;
-}
-
-
-/* Thứ Năm */
-
-.calendar th:nth-child(6) {
-    background-color: #f0e68c;
-}
-
-
-/* Thứ Sáu */
 
 .calendar th:nth-child(7) {
     background-color: #d1ecf1;
 }
 
 
-/* Thứ Bảy */
+/* Các ngày trong tuần khác có nền vàng nhạt */
+
+.calendar th:nth-child(n+2):nth-child(-n+6) {
+    background-color: #f0e68c;
+}
+
+
+/* Phần textarea nhập mục tiêu */
+
+.calendar .goal-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    /* Giảm kích thước font cho input trên điện thoại */
+    resize: vertical;
+    min-height: 50px;
+    overflow: hidden;
+    height: auto;
+    white-space: pre-wrap;
+}
+
+
+/* Thêm khoảng cách giữa ngày và mục tiêu */
+
+.calendar .date {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+/* Media query cho màn hình nhỏ (điện thoại) */
+
+@media (max-width: 600px) {
+    /* Thay đổi font size để dễ đọc hơn trên màn hình nhỏ */
+    .calendar td {
+        font-size: 12px;
+        padding: 5px;
+    }
+    .calendar th {
+        font-size: 12px;
+        padding: 5px;
+    }
+    /* Giảm kích thước của textarea */
+    .calendar .goal-input {
+        font-size: 12px;
+        min-height: 40px;
+    }
+    /* Cải thiện khả năng hiển thị lịch */
+    .calendar {
+        width: 100%;
+        overflow-x: auto;
+        /* Cho phép cuộn ngang nếu cần thiết */
+    }
+    /* Điều chỉnh bảng lịch sao cho dễ nhìn hơn trên điện thoại */
+    .calendar td {
+        padding: 5px;
+    }
+    .calendar th {
+        font-size: 14px;
+        /* Giảm kích thước tiêu đề */
+    }
+    /* Hiển thị các ngày theo kiểu column stack trên màn hình nhỏ */
+    .calendar td {
+        display: inline-block;
+        width: calc(100% / 7);
+        /* Đảm bảo mỗi ô chiếm đều chiều rộng */
+        text-align: center;
+        padding: 8px;
+    }
+    /* Nếu ngày không có mục tiêu, ẩn nó đi để tiết kiệm không gian */
+    .calendar .goal-input {
+        display: block;
+        margin-top: 10px;
+    }
+    .calendar .date {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+}
