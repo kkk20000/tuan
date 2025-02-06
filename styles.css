@@ -4,15 +4,21 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    overflow: hidden;
+    /* Giới hạn overflow của trang để tránh cuộn không cần thiết */
 }
 
 
-/* Các thẻ thẻ, cột, ô của bảng lịch sẽ co dãn tốt trên màn hình nhỏ */
+/* Cố định kích thước của bảng lịch và sử dụng viewport units để giữ tỷ lệ */
 
 .calendar {
     width: 100%;
+    height: 100vh;
+    /* Chiếm toàn bộ chiều cao màn hình */
     table-layout: fixed;
     border-collapse: collapse;
+    margin: 0 auto;
+    /* Căn giữa lịch */
 }
 
 
@@ -20,11 +26,14 @@ body {
 
 .calendar td {
     border: 1px solid #ccc;
-    padding: 8px;
+    padding: 2vh;
+    /* Sử dụng vh để làm cho padding thay đổi theo chiều cao màn hình */
     text-align: center;
     vertical-align: top;
-    font-size: 14px;
-    /* Kích thước chữ giảm cho phù hợp với màn hình nhỏ */
+    font-size: 2vw;
+    /* Sử dụng vw để font-size thay đổi theo chiều rộng màn hình */
+    box-sizing: border-box;
+    /* Đảm bảo padding và border không làm thay đổi kích thước của các ô */
 }
 
 
@@ -40,7 +49,8 @@ body {
 .calendar th {
     background-color: #f0f0f0;
     font-weight: bold;
-    padding: 8px;
+    padding: 2vw;
+    /* Đảm bảo padding trong các ô ngày trong tuần cũng theo tỷ lệ */
 }
 
 
@@ -65,13 +75,14 @@ body {
 /* Phần textarea nhập mục tiêu */
 
 .calendar .goal-input {
-    width: 100%;
-    padding: 8px;
+    width: 90%;
+    padding: 2vh;
     border: 1px solid #ccc;
-    font-size: 12px;
-    /* Giảm kích thước font cho input trên điện thoại */
+    font-size: 1.5vw;
+    /* Font size cho textarea sẽ thay đổi theo chiều rộng màn hình */
     resize: vertical;
-    min-height: 50px;
+    min-height: 5vh;
+    /* Dùng vh để chiều cao của textarea thay đổi theo màn hình */
     overflow: hidden;
     height: auto;
     white-space: pre-wrap;
@@ -82,68 +93,49 @@ body {
 
 .calendar .date {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 1vh;
+    /* Khoảng cách giữa ngày và mục tiêu */
 }
 
 
 /* Lớp CSS phóng to chỉ cho textarea khi nhấn */
 
 .zoomed {
-    font-size: 16px;
+    font-size: 3vw;
+    /* Tăng kích thước của font khi phóng to */
     transform: scale(1.5);
-    /* Phóng to đối tượng textarea */
     transition: transform 0.3s ease-in-out;
-    padding: 16px;
-    /* Tăng kích thước của textarea khi nhấn */
+    padding: 4vh;
 }
 
 
 /* Media query cho màn hình nhỏ (điện thoại) */
 
 @media (max-width: 600px) {
-    /* Thay đổi font size để dễ đọc hơn trên màn hình nhỏ */
+    /* Giảm kích thước font cho các ô trong lịch */
     .calendar td {
-        font-size: 12px;
-        padding: 5px;
+        font-size: 4vw;
+        /* Font size thay đổi theo chiều rộng màn hình */
+        padding: 5vw;
+        /* Padding thay đổi theo chiều rộng màn hình */
     }
     .calendar th {
-        font-size: 12px;
-        padding: 5px;
+        font-size: 4vw;
+        padding: 5vw;
     }
     /* Giảm kích thước của textarea */
     .calendar .goal-input {
-        font-size: 12px;
-        min-height: 40px;
-    }
-    /* Cải thiện khả năng hiển thị lịch */
-    .calendar {
-        width: 100%;
-        overflow-x: auto;
-        /* Cho phép cuộn ngang nếu cần thiết */
+        font-size: 3.5vw;
+        /* Font size textarea thay đổi theo chiều rộng màn hình */
+        min-height: 6vh;
+        /* Chiều cao textarea thay đổi theo chiều cao màn hình */
     }
     /* Điều chỉnh bảng lịch sao cho dễ nhìn hơn trên điện thoại */
     .calendar td {
-        padding: 5px;
+        padding: 4vw;
     }
     .calendar th {
-        font-size: 14px;
+        font-size: 4vw;
         /* Giảm kích thước tiêu đề */
-    }
-    /* Hiển thị các ngày theo kiểu column stack trên màn hình nhỏ */
-    .calendar td {
-        display: inline-block;
-        width: calc(100% / 7);
-        /* Đảm bảo mỗi ô chiếm đều chiều rộng */
-        text-align: center;
-        padding: 8px;
-    }
-    /* Nếu ngày không có mục tiêu, ẩn nó đi để tiết kiệm không gian */
-    .calendar .goal-input {
-        display: block;
-        margin-top: 10px;
-    }
-    .calendar .date {
-        font-size: 16px;
-        margin-bottom: 10px;
     }
 }
