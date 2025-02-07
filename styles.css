@@ -12,166 +12,27 @@ body {
     margin: 0 auto;
 }
 
+
+/* Header (Cố định) */
+
 header {
     background-color: #333;
     color: white;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
-}
-
-header nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-h1,
-h2 {
-    margin: 20px 0;
-}
-
-section {
-    padding: 40px 0;
-    background-color: white;
-    margin-bottom: 20px;
-}
-
-
-/* Services Section */
-
-.services {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.service-item {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 20px;
-    width: 30%;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.service-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.service-item i {
-    color: #f9a825;
-    margin-bottom: 20px;
-}
-
-.service-item h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.service-item p {
-    font-size: 16px;
-    color: #555;
-}
-
-
-/* Service Image */
-
-#service-image {
-    margin-top: 30px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-#service-image img {
-    max-width: 60%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
-
-#service-image img:hover {
-    transform: scale(1.05);
-}
-
-
-/* Contact Form */
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-form input,
-form textarea {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    font-size: 16px;
-}
-
-form button {
-    padding: 10px 20px;
-    background-color: #f9a825;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-form button:hover {
-    background-color: #f57f17;
-}
-
-
-/* General Styles */
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-
-/* Header */
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    position: relative;
+    z-index: 1000;
+    /* Đảm bảo header luôn ở trên các phần tử khác */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 header .logo {
     position: absolute;
     left: 20px;
-    top: 20px;
+    top: 15px;
     height: 50px;
 }
 
@@ -179,6 +40,8 @@ header h1 {
     margin-left: 80px;
     /* Tạo khoảng cách cho logo */
     font-size: 32px;
+    margin-top: 10px;
+    /* Giảm khoảng cách ở trên */
 }
 
 
@@ -200,6 +63,17 @@ header nav ul li a {
     text-decoration: none;
     font-weight: bold;
 }
+
+
+/* Margin cho phần nội dung sau header */
+
+body {
+    padding-top: 100px;
+    /* Đảm bảo nội dung không bị che khuất bởi header cố định */
+}
+
+
+/* Các phần còn lại */
 
 h1,
 h2 {
@@ -341,4 +215,48 @@ form button:hover {
 .facebook-link:active {
     transform: scale(0.98);
     /* Hiệu ứng khi nhấn */
+}
+
+
+/* Responsive Styles cho các thiết bị di động */
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        /* Giảm chiều rộng container cho các thiết bị nhỏ */
+    }
+    /* Header */
+    header h1 {
+        font-size: 24px;
+        /* Giảm kích thước tiêu đề trên thiết bị di động */
+        margin-left: 60px;
+        /* Căn chỉnh lại khoảng cách khi có logo */
+    }
+    /* Các mục menu trong header */
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+    .car-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    .car-item {
+        width: 80%;
+        /* Giảm chiều rộng của mỗi mục xe */
+        margin-bottom: 20px;
+        /* Thêm khoảng cách giữa các mục xe */
+    }
+    /* Liên kết Facebook */
+    .facebook-link {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 16px;
+        /* Điều chỉnh padding để phù hợp với màn hình nhỏ */
+    }
+    .facebook-link i {
+        font-size: 20px;
+        /* Giảm kích thước icon trên điện thoại */
+    }
 }
