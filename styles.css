@@ -1,141 +1,344 @@
-/* Đảm bảo lịch có thể được cuộn trên màn hình nhỏ */
+/* General Styles */
 
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-    /* Giới hạn overflow của trang để tránh cuộn không cần thiết */
+    background-color: #f4f4f4;
 }
 
-
-/* Cố định kích thước của bảng lịch và sử dụng viewport units để giữ tỷ lệ */
-
-.calendar {
-    width: 100%;
-    height: 100vh;
-    /* Chiếm toàn bộ chiều cao màn hình */
-    table-layout: fixed;
-    border-collapse: collapse;
+.container {
+    width: 80%;
     margin: 0 auto;
-    /* Căn giữa lịch */
 }
 
-
-/* Mỗi ô trong lịch có padding và giới hạn kích thước */
-
-.calendar td {
-    border: 1px solid #ccc;
-    padding: 2vh;
-    /* Sử dụng vh để làm cho padding thay đổi theo chiều cao màn hình */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
     text-align: center;
-    vertical-align: top;
-    font-size: 2vw;
-    /* Sử dụng vw để font-size thay đổi theo chiều rộng màn hình */
-    box-sizing: border-box;
-    /* Đảm bảo padding và border không làm thay đổi kích thước của các ô */
 }
 
-
-/* Ngày hôm nay được đánh dấu */
-
-.today {
-    background-color: yellow;
+header nav ul {
+    list-style-type: none;
+    padding: 0;
 }
 
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
 
-/* Các ngày trong tuần sẽ có màu nền nhẹ */
-
-.calendar th {
-    background-color: #f0f0f0;
+header nav ul li a {
+    color: white;
+    text-decoration: none;
     font-weight: bold;
-    padding: 2vw;
-    /* Đảm bảo padding trong các ô ngày trong tuần cũng theo tỷ lệ */
+}
+
+h1,
+h2 {
+    margin: 20px 0;
+}
+
+section {
+    padding: 40px 0;
+    background-color: white;
+    margin-bottom: 20px;
 }
 
 
-/* Thứ Bảy và Chủ Nhật có màu sắc riêng */
+/* Services Section */
 
-.calendar th:nth-child(1) {
-    background-color: #f8d7da;
+.services {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.calendar th:nth-child(7) {
-    background-color: #d1ecf1;
+.service-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-item i {
+    color: #f9a825;
+    margin-bottom: 20px;
+}
+
+.service-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #555;
 }
 
 
-/* Các ngày trong tuần khác có nền vàng nhạt */
+/* Service Image */
 
-.calendar th:nth-child(n+2):nth-child(-n+6) {
-    background-color: #f0e68c;
+#service-image {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-
-/* Phần textarea nhập mục tiêu */
-
-.calendar .goal-input {
-    width: 90%;
-    padding: 2vh;
-    border: 1px solid #ccc;
-    font-size: 1.5vw;
-    /* Font size cho textarea sẽ thay đổi theo chiều rộng màn hình */
-    resize: vertical;
-    min-height: 5vh;
-    /* Dùng vh để chiều cao của textarea thay đổi theo màn hình */
-    overflow: hidden;
+#service-image img {
+    max-width: 60%;
     height: auto;
-    white-space: pre-wrap;
-}
-
-
-/* Thêm khoảng cách giữa ngày và mục tiêu */
-
-.calendar .date {
-    font-weight: bold;
-    margin-bottom: 1vh;
-    /* Khoảng cách giữa ngày và mục tiêu */
-}
-
-
-/* Lớp CSS phóng to chỉ cho textarea khi nhấn */
-
-.zoomed {
-    font-size: 3vw;
-    /* Tăng kích thước của font khi phóng to */
-    transform: scale(1.5);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
-    padding: 4vh;
+}
+
+#service-image img:hover {
+    transform: scale(1.05);
 }
 
 
-/* Media query cho màn hình nhỏ (điện thoại) */
+/* Contact Form */
 
-@media (max-width: 600px) {
-    /* Giảm kích thước font cho các ô trong lịch */
-    .calendar td {
-        font-size: 4vw;
-        /* Font size thay đổi theo chiều rộng màn hình */
-        padding: 5vw;
-        /* Padding thay đổi theo chiều rộng màn hình */
-    }
-    .calendar th {
-        font-size: 4vw;
-        padding: 5vw;
-    }
-    /* Giảm kích thước của textarea */
-    .calendar .goal-input {
-        font-size: 3.5vw;
-        /* Font size textarea thay đổi theo chiều rộng màn hình */
-        min-height: 6vh;
-        /* Chiều cao textarea thay đổi theo chiều cao màn hình */
-    }
-    /* Điều chỉnh bảng lịch sao cho dễ nhìn hơn trên điện thoại */
-    .calendar td {
-        padding: 4vw;
-    }
-    .calendar th {
-        font-size: 4vw;
-        /* Giảm kích thước tiêu đề */
-    }
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #f9a825;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #f57f17;
+}
+
+
+/* General Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+/* Header */
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+header .logo {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    height: 50px;
+}
+
+header h1 {
+    margin-left: 80px;
+    /* Tạo khoảng cách cho logo */
+    font-size: 32px;
+}
+
+
+/* Nav */
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+h1,
+h2 {
+    margin: 20px 0;
+}
+
+
+/* Bán Xe */
+
+#sell-car {
+    padding: 40px 0;
+    background-color: white;
+}
+
+.car-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.car-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.car-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.car-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.car-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.car-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+.car-item button {
+    padding: 10px 20px;
+    background-color: #f9a825;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.car-item button:hover {
+    background-color: #f57f17;
+}
+
+
+/* Liên Hệ */
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #f9a825;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #f57f17;
+}
+
+
+/* Liên kết Facebook ở góc dưới màn hình */
+
+.facebook-link {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3b5998;
+    /* Màu nền của Facebook */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* Đảm bảo phần tử này luôn ở trên cùng */
+}
+
+.facebook-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.facebook-link i {
+    font-size: 24px;
+    /* Kích thước icon Facebook */
+    margin-right: 10px;
+    /* Khoảng cách giữa icon và văn bản */
+}
+
+.facebook-link:hover {
+    background-color: #2d4373;
+    /* Màu nền khi hover */
+}
+
+.facebook-link:active {
+    transform: scale(0.98);
+    /* Hiệu ứng khi nhấn */
 }
