@@ -4,35 +4,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lịch làm việc</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Công Ty Ô Tô - Dịch Vụ và Sản Phẩm</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <!-- Thêm logo công ty vào header -->
+            <img src="images/logo.png" alt="Logo Công Ty" class="logo">
+            <h1>Công Ty Ô Tô - Dịch Vụ và Sản Phẩm</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">Giới Thiệu</a></li>
+                    <li><a href="#services">Dịch Vụ</a></li>
+                    <li><a href="#sell-car">Bán Xe</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <h1 id="month-name"></h1>
-    <div>
-        <select id="search-month" oninput="searchDate()">
-            <option value="0">Tháng 1</option>
-            <option value="1">Tháng 2</option>
-            <option value="2">Tháng 3</option>
-            <option value="3">Tháng 4</option>
-            <option value="4">Tháng 5</option>
-            <option value="5">Tháng 6</option>
-            <option value="6">Tháng 7</option>
-            <option value="7">Tháng 8</option>
-            <option value="8">Tháng 9</option>
-            <option value="9">Tháng 10</option>
-            <option value="10">Tháng 11</option>
-            <option value="11">Tháng 12</option>
-        </select>
+    <!-- Giới Thiệu Công Ty -->
+    <section id="about">
+        <div class="container">
+            <h2>Giới Thiệu Về Chúng Tôi</h2>
+            <p>Chúng tôi cung cấp các dịch vụ liên quan đến ô tô như sửa chữa xe, kéo xe, mua bảo hiểm, mua xe trả góp, bảo dưỡng xe và tư vấn miễn phí. Dưới đây là các dịch vụ chúng tôi cung cấp:</p>
+
+            <div class="services">
+                <!-- Dịch Vụ Sửa Xe -->
+                <div class="service-item" onclick="showImage('repair-car')">
+                    <i class="fa fa-wrench fa-3x"></i>
+                    <h3>Sửa Xe</h3>
+                    <p>Chúng tôi cung cấp dịch vụ sửa chữa xe nhanh chóng và chất lượng, đảm bảo sự an toàn cho bạn trên mọi hành trình.</p>
+                </div>
+
+                <!-- Dịch Vụ Kéo Xe -->
+                <div class="service-item" onclick="showImage('towing-car')">
+                    <i class="fa fa-truck fa-3x"></i>
+                    <h3>Kéo Xe</h3>
+                    <p>Với đội ngũ nhân viên chuyên nghiệp và các phương tiện kéo xe hiện đại, chúng tôi cam kết hỗ trợ bạn kịp thời khi xe gặp sự cố.</p>
+                </div>
+
+                <!-- Dịch Vụ Mua Bảo Hiểm Xe -->
+                <div class="service-item" onclick="showImage('insurance-car')">
+                    <i class="fa fa-shield-alt fa-3x"></i>
+                    <h3>Mua Bảo Hiểm Xe</h3>
+                    <p>Chúng tôi cung cấp dịch vụ tư vấn và bán bảo hiểm xe với nhiều gói bảo hiểm phù hợp, giúp bạn yên tâm hơn khi tham gia giao thông.</p>
+                </div>
+
+                <!-- Dịch Vụ Mua Xe Trả Góp -->
+                <div class="service-item" onclick="showImage('car-loan')">
+                    <i class="fa fa-credit-card fa-3x"></i>
+                    <h3>Mua Xe Trả Góp</h3>
+                    <p>Cung cấp dịch vụ mua xe trả góp với các hình thức thanh toán linh hoạt, giúp bạn dễ dàng sở hữu chiếc xe mơ ước.</p>
+                </div>
+
+                <!-- Dịch Vụ Bảo Dưỡng Xe -->
+                <div class="service-item" onclick="showImage('car-maintenance')">
+                    <i class="fa fa-cogs fa-3x"></i>
+                    <h3>Bảo Dưỡng Xe</h3>
+                    <p>Chúng tôi cung cấp dịch vụ bảo dưỡng xe định kỳ để xe của bạn luôn hoạt động hiệu quả và kéo dài tuổi thọ.</p>
+                </div>
+
+                <!-- Dịch Vụ Tư Vấn Miễn Phí -->
+                <div class="service-item" onclick="showImage('free-consultation')">
+                    <i class="fa fa-comment-dots fa-3x"></i>
+                    <h3>Tư Vấn Miễn Phí</h3>
+                    <p>Chúng tôi cung cấp dịch vụ tư vấn miễn phí cho mọi thắc mắc về xe, giúp bạn có được lựa chọn phù hợp nhất.</p>
+                </div>
+            </div>
+
+            <!-- Hình ảnh dịch vụ -->
+            <div id="service-image">
+                <img id="service-image-display" src="" alt="Hình ảnh dịch vụ" style="display:none;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Bán Xe -->
+    <section id="sell-car">
+        <div class="container">
+            <h2>Bán Xe</h2>
+            <p>Chúng tôi cung cấp các loại xe ô tô mới và cũ với giá cả hợp lý. Dưới đây là một số mẫu xe đang có tại cửa hàng:</p>
+
+            <div class="car-list">
+                <!-- Xe 1 -->
+                <div class="car-item">
+                    <img src="images/car1.jpg" alt="Xe 1">
+                    <h3>Xe Sedan Mới</h3>
+                    <p>Giá: 500 triệu VND</p>
+                    <button>Mua Ngay</button>
+                </div>
+                <!-- Xe 2 -->
+                <div class="car-item">
+                    <img src="images/car2.jpg" alt="Xe 2">
+                    <h3>Xe SUV Cũ</h3>
+                    <p>Giá: 300 triệu VND</p>
+                    <button>Mua Ngay</button>
+                </div>
+                <!-- Thêm các xe khác ở đây -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Liên Hệ -->
+    <section id="contact">
+        <div class="container">
+            <h2>Liên Hệ Với Chúng Tôi</h2>
+            <form>
+                <label for="name">Họ và tên:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Lời nhắn:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Gửi</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <!-- Liên kết Facebook - Icon -->
+    <div class="facebook-link">
+        <a href="https://www.facebook.com/xejapancskh" target="_blank">
+            <i class="fab fa-facebook-f"></i> Liên hệ Facebook
+        </a>
     </div>
 
-    <table class="calendar" id="calendar-body">
-        <!-- Lịch sẽ được tạo động ở đây -->
-    </table>
-
-    <script src="scripts.js"></script>
 </body>
 
 </html>
